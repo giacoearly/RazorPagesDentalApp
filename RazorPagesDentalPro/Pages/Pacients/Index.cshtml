@@ -1,0 +1,96 @@
+﻿@page
+@model RazorPagesDentalPro.Pages.Pacients.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form method="get" >
+    <p>
+        Dentist:
+        <select asp-for="ChosenDentist" asp-items="Model.DentistsToSelect">
+            <option value="">All</option>
+        </select>
+        <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pacient[0].Nume)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pacient[0].Prenume)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pacient[0].NumarFisa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pacient[0].Medic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pacient[0].SerieCi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pacient[0].NumarCi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pacient[0].Cnp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pacient[0].Telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pacient[0].Observatii)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Pacient) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prenume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumarFisa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerieCi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumarCi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cnp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observatii)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
